@@ -1,31 +1,28 @@
 fetch("https://pokeapi.co/api/v2/pokemon/charmander")
   .then((res) => res.json())
   .then((data) => {
-    let name = document.querySelector(".pokemon-name");
-    name.innerText = data.name;
-    let info = document.querySelector(".info");
-    info.innerHTML = `<img class="pok-img" src="${data.sprites.front_default}">
-    <div class="type">Type: ${data.types[0].type.name}</div>
-    <div class="stats">
-      <h3>Stats</h3>
-      <div class="${data.stats[0].stat.name}">
-        ${data.stats[0].base_stat} ${data.stats[0].stat.name}
-      </div>
-      <div class="${data.stats[1].stat.name}">
-        ${data.stats[1].base_stat} ${data.stats[1].stat.name}
-      </div>
-      <div class="${data.stats[2].stat.name}">
-        ${data.stats[2].base_stat} ${data.stats[2].stat.name}
-      </div>
-      <div class="${data.stats[3].stat.name}">
-        ${data.stats[3].base_stat} ${data.stats[3].stat.name}
-      </div>
-      <div class="${data.stats[4].stat.name}">
-        ${data.stats[4].base_stat} ${data.stats[4].stat.name}
-      </div>
-      <div class="${data.stats[5].stat.name}">
-        ${data.stats[5].base_stat} ${data.stats[5].stat.name}
-      </div>
-    </div>`;
+    let nameDiv = document.querySelector(".pokemon-name");
+    let pokeName = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+
+    let typeDiv = document.querySelector(".poke-type");
+    let pokeType =
+      data.types[0].type.name.charAt(0).toUpperCase() +
+      data.types[0].type.name.slice(1);
+
+    let img = document.querySelector("img");
+    img.src = data.sprites.front_default;
+
+    nameDiv.innerText = pokeName;
+    typeDiv.innerText = "Type: " + pokeType;
+
+    let stats = document.querySelector(".stats");
+    for (let i = 0; i < data.stats.length; i++) {
+      let div = document.createElement("div");
+      div.classList.add(`${data.stats[i].stat.name}`);
+      div.innerText = data.stats[i].base_stat + " " + data.stats[i].stat.name;
+      stats.appendChild(div);
+      console.log(stats);
+    }
+
     console.log(data);
   });
