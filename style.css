@@ -1,3 +1,9 @@
+html {
+  font-family: "Asap", sans-serif;
+  font-weight: 100px;
+  font-style: normal;
+}
+
 body {
   color: white;
   font-size: 1.3rem;
