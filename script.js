@@ -1,4 +1,4 @@
-fetch("https://pokeapi.co/api/v2/pokemon/meltan")
+fetch("https://pokeapi.co/api/v2/pokemon/grafaiai")
   .then((res) => res.json())
   .then((data) => {
     let nameDiv = document.querySelector(".pokemon-name");
@@ -24,61 +24,81 @@ fetch("https://pokeapi.co/api/v2/pokemon/meltan")
       console.log(stats);
     }
 
+    let colors = {
+      normal: "#A8A878",
+      fire: "#F08030",
+      water: "#6890F0",
+      electric: "#F8D030",
+      grass: "#78C850",
+      ice: "#98D8D8",
+      fighting: "#C03028",
+      poison: "#A040A0",
+      ground: "#E0C068",
+      flying: "#A890F0",
+      psychic: "#F85888",
+      bug: "#A8B820",
+      rock: "#B8A038",
+      ghost: "#705898",
+      dragon: "#7038F8",
+      dark: "#705848",
+      steel: "#B8B8D0",
+      fairy: "#F0B6BC",
+    };
     let bg = document.querySelector("body");
     switch (pokeType) {
       case "Normal":
-        bg.style.backgroundColor = "#A8A878";
+        setStyle(bg, img, colors.normal);
         break;
       case "Fire":
-        bg.style.backgroundColor = "#F08030";
+        setStyle(bg, img, colors.fire);
         break;
       case "Water":
-        bg.style.backgroundColor = "#6890F0";
+        setStyle(bg, img, colors.water);
         break;
       case "Electric":
-        bg.style.backgroundColor = "#F8D030";
+        setStyle(bg, img, colors.electric);
         break;
       case "Grass":
-        bg.style.backgroundColor = "#78C850";
+        setStyle(bg, img, colors.grass);
         break;
       case "Ice":
-        bg.style.backgroundColor = "#98D8D8";
+        setStyle(bg, img, colors.ice);
         break;
       case "Fighting":
-        bg.style.backgroundColor = "#C03028";
+        setStyle(bg, img, colors.fighting);
         break;
       case "Poison":
-        bg.style.backgroundColor = "#A040A0";
+        setStyle(bg, img, colors.poison);
         break;
       case "Ground":
-        bg.style.backgroundColor = "#E0C068";
+        setStyle(bg, img, colors.ground);
         break;
       case "Flying":
-        bg.style.backgroundColor = "#A890F0";
+        setStyle(bg, img, colors.flying);
         break;
       case "Psychic":
-        bg.style.backgroundColor = "#F85888";
+        setStyle(bg, img, colors.psychic);
         break;
       case "Bug":
-        bg.style.backgroundColor = "#A8B820";
+        setStyle(bg, img, colors.bug);
         break;
       case "Rock":
-        bg.style.backgroundColor = "#B8A038";
+        setStyle(bg, img, colors.rock);
         break;
       case "Ghost":
-        bg.style.backgroundColor = "#705898";
+        setStyle(bg, img, colors.ghost);
         break;
       case "Dragon":
-        bg.style.backgroundColor = "#7038F8";
+        setStyle(bg, img, colors.dragon);
         break;
       case "Dark":
-        bg.style.backgroundColor = "#705848";
+        setStyle(bg, img, colors.dark);
         break;
       case "Steel":
-        bg.style.backgroundColor = "#B8B8D0";
+        setStyle(bg, img, colors.steel);
         break;
       case "Fairy":
-        bg.style.backgroundColor = "#F0B6BC";
+        setStyle(bg, img, colors.fairy);
         break;
       default:
         bg.style.backgroundColor = "white";
@@ -87,3 +107,9 @@ fetch("https://pokeapi.co/api/v2/pokemon/meltan")
 
     console.log(data);
   });
+
+function setStyle(bg, img, color) {
+  bg.style.backgroundColor = color;
+  img.style.borderColor = color;
+  img.style.boxShadow = `0 0 10px 10px ${color}`;
+}
